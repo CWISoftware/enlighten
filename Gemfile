@@ -75,6 +75,9 @@ gem 'scss_lint', require: false
 # Application monitoring
 gem 'newrelic_rpm'
 
+# Application Permission
+gem 'pundit'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
