@@ -3,9 +3,10 @@
     .small-9.columns
       = f.text_field :body, autofocus: true, placeholder: 'Have something nice to say?'
     .small-3.columns
-      = f.button :submit, class: 'postfix'
+      = f.button :submit, value: 'Post', class: 'postfix'
 
 #activities
+  | ACTIVITE
   - activities.each do |activity|
     - if activity.item.is_a? Post
       article.activity-item
