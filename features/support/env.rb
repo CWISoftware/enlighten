@@ -21,7 +21,6 @@ rescue NameError
   raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
-Capybara.default_driver = :poltergeist
 Capybara.register_driver :poltergeist do |app|
   options = {
     js_errors: false,
@@ -34,6 +33,12 @@ Capybara.register_driver :poltergeist do |app|
 
   Capybara::Poltergeist::Driver.new(app, options)
 end
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.default_driver = :poltergeist
 
 # Screenshots after steps - good for debugging
 screenshots_folder = Rails.root.join('screenshots')

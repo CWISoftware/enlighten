@@ -4,7 +4,7 @@ Feature: Person
 
   Scenario: View a person
     Given a "person" with the following data:
-      | attribute | value                |
+      | attribute | value    |
       | name      | John Doe |
     When  I access its url
     Then  I should see "John Doe"

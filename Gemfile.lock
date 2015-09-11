@@ -64,6 +64,8 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     cd (1.0.1)
+    childprocess (0.5.6)
+      ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.3.4)
     clipboard (1.0.6)
     cliver (0.3.2)
@@ -233,6 +235,8 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -328,6 +332,7 @@ GEM
     ruby_engine (1.0.1)
     ruby_info (1.0.1)
     ruby_version (1.0.1)
+    rubyzip (1.1.7)
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -341,6 +346,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (2.47.1)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
     simple_form (3.1.1)
@@ -402,6 +412,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket (1.2.2)
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -440,6 +451,7 @@ DEPENDENCIES
   pry
   pry-nav
   pry-stack_explorer
+  pundit
   quiet_assets
   rails
   rails-i18n
@@ -454,6 +466,7 @@ DEPENDENCIES
   sass-rails
   scss_lint
   sdoc (~> 0.4.0)
+  selenium-webdriver
   shoulda-matchers
   simple_form
   simplecov

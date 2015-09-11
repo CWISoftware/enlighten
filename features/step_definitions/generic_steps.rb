@@ -29,6 +29,14 @@ When(/^I click(?:ed)? on "(.*?)"$/) do |link|
   click_link(link)
 end
 
+When(/^I type "(.*?)" on "(.*?)"$/) do |input_text, field_name|
+  fill_in(field_name, with: input_text)
+end
+
+When(/^I type "(.*?)" on the filed with "(.*?)" placeholder$/) do |input_text, field_placeholder|
+  find(:css, "[placeholder='#{field_placeholder}']").set(input_text)
+end
+
 Then(/^I should see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end

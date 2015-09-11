@@ -75,6 +75,9 @@ gem 'scss_lint', require: false
 # Application monitoring
 gem 'newrelic_rpm'
 
+# Application Permission
+gem 'pundit'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -110,6 +113,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'poltergeist'
+  gem 'selenium-webdriver'
 
   # Generates test data
   gem 'factory_girl_rails', '~> 4.0'
