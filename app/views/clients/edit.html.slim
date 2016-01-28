@@ -1,6 +1,6 @@
-.row
-  = link_to 'Show', @client, class: 'tiny secondary button right'
-  = link_to 'Back', clients_path, class: 'tiny secondary button right'
-  h1 Editing client
+.page-header
+  h1 = I18n.t(:editing_client)
+  = link_to I18n.t(:show), @client, class: 'tiny secondary button right'
+  = link_to I18n.t(:back), clients_path, class: 'tiny secondary button right'
 
 == render 'form'

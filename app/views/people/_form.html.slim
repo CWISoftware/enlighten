@@ -1,39 +1,33 @@
-= simple_form_for(@person) do |f|
+= simple_form_for @person, html: { class: "form-bordered"} do |f|
   = f.error_notification
 
-  .row
-    .small-12.columns
-      = f.attachment_field :image
+  .form-group
+    = f.attachment_field :image
 
-  .row
-    .small-12.columns
-      = f.association :user, label_method: :email
+  .form-group
+    = f.association :user, label_method: :email
 
-  .row
-    .small-12.columns
-      = f.input :name
+  .form-group
+    = f.input :name, input_html: { :class => 'form-text' }
 
-  fieldset
-    legend Social accounts
+  .form-group
+    fieldset
+      legend = I18n.t(:social_accounts)
 
-    .row
-      .small-12.columns
-        #social_links
-          = f.simple_fields_for :social_links do |social_link|
-            = render 'social_link_fields', f: social_link
-          .links
-            = link_to_add_association 'add social link', f, :social_links
+      #social_links
+        = f.simple_fields_for :social_links do |social_link|
+          = render 'social_link_fields', f: social_link
+        .links
+          = link_to_add_association I18n.t(:add_social_link), f, :social_links, class: 'button'
 
-  fieldset
-    legend Technologies
+  .form-group
+    fieldset
+      legend = I18n.t(:technologies)
 
-    .row
-      .small-12.columns
-        #technologies
-          = f.simple_fields_for :technologies do |technology|
-            = render 'technology_fields', f: technology
-          .links
-            = link_to_add_association 'add technology', f, :technologies
+      #technologies
+        = f.simple_fields_for :technologies do |technology|
+          = render 'technology_fields', f: technology
+        .links
+          = link_to_add_association I18n.t(:add_technology), f, :technologies, class: 'button'
 
-  .row
-    = f.button :submit
+  = f.button :submit

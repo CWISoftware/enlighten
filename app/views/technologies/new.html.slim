@@ -1,5 +1,5 @@
-.row
-  = link_to 'Back', technologies_path, class: 'tiny secondary button right'
-  h1 New technology
+.page-header
+  h1 = I18n.t(:new_technology)
+  = link_to I18n.t(:back), technologies_path, class: 'tiny secondary button right'
 
 == render 'form'
