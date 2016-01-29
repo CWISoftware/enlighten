@@ -38,6 +38,9 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise_ldap_authenticatable'
 
+# background-jobs
+gem 'sidekiq', '4.0.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 

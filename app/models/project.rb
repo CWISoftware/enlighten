@@ -16,6 +16,8 @@
 class Project < ActiveRecord::Base
   has_paper_trail
 
+  include Notificatable
+
   belongs_to :client
 
   has_and_belongs_to_many :technologies,
