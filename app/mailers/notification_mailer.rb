@@ -1,8 +1,7 @@
 class NotificationMailer < ApplicationMailer
-  def notification_email(entity)
+  def notification_email(entity, follower)
     @entity = entity
-    followers = entity.followers.includes(:person).where(Person.where(notification: true)).all
-    emails = followers.pluck(:email)
-    mail(bcc: emails, subject: 'test')
+    @person = follower.person
+    mail(to: follower.email, subject: "#{entity.name} has some updates")
   end
 end

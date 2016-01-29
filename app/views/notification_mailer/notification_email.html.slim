@@ -13,15 +13,15 @@ table bgcolor="#eee" border="0" cellpadding="0" cellspacing="0" width="100%"
                 td width="10%"  &nbsp;
                 td align="left" valign="top" width="80%"
                   font style="font-family: Georgia, 'Times New Roman', Times, serif; color:#010101; font-size:24px"
-                    strong Hi
+                    strong
+                      = "Hi #{@person.name}"
                   br
                   br
                   font style="font-family: Verdana, Geneva, sans-serif; color:#666766; font-size:13px; line-height:21px"
-                    - text = 'There is an update in'
-                    - name = @entity.name
-                    =' text
+                    - text = 'There is an update in '
+                    = text
                     strong
-                      = name
+                      = @entity.name
                     | .
                     br
                     br
