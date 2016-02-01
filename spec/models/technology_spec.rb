@@ -107,6 +107,20 @@ RSpec.describe Technology, type: :model do
     end
   end
 
+  describe '#send_notification' do
+    let(:technology) { create :technology }
+
+    before do
+      allow(technology).to receive(:send_notification)
+    end
+
+    it 'sends notification email after saving' do
+      expect(technology).to receive(:send_notification).exactly(2).times
+      technology.save
+      technology.update_attributes({})
+    end
+  end
+
   describe 'technology hierarchy' do
     subject { create :technology }
 
