@@ -115,8 +115,6 @@ GEM
       compass (~> 1.0.0)
       sass-rails (< 5.1)
       sprockets (< 2.13)
-    concurrent-ruby (1.0.0)
-    connection_pool (2.2.0)
     cucumber (2.3.2)
       builder (>= 2.1.2)
       cucumber-core (~> 1.4.0)
@@ -325,7 +323,6 @@ GEM
     rdoc (4.2.1)
       json (~> 1.4)
     redcarpet (3.3.4)
-    redis (3.2.2)
     refile (0.6.2)
       mime-types
       rest-client (~> 1.8)
@@ -399,11 +396,6 @@ GEM
     sexp_processor (4.6.1)
     shoulda-matchers (3.1.0)
       activesupport (>= 4.0.0)
-    sidekiq (4.0.0)
-      concurrent-ruby (~> 1.0)
-      connection_pool (~> 2.2, >= 2.2.0)
-      json (~> 1.0)
-      redis (~> 3.2, >= 3.2.1)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -530,7 +522,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   shoulda-matchers
-  sidekiq (= 4.0.0)
   simple_form
   simplecov
   slim-rails

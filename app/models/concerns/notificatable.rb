@@ -3,7 +3,7 @@ module Notificatable
 
   included do
     after_update do |entity|
-      NotificationJob.perform_later(entity)
+      NotificationJob.perform_later entity
     end
   end
 end

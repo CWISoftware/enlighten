@@ -26,5 +26,13 @@ FactoryGirl.define do
     trait :with_person do
       person { create :person }
     end
+
+    trait :with_notification do
+      person { create :person }
+    end
+
+    trait :without_notification do
+      person { create :person, :without_notification }
+    end
   end
 end
