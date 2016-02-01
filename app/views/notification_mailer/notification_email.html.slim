@@ -14,18 +14,18 @@ table bgcolor="#eee" border="0" cellpadding="0" cellspacing="0" width="100%"
                 td align="left" valign="top" width="80%"
                   font style="font-family: Georgia, 'Times New Roman', Times, serif; color:#010101; font-size:24px"
                     strong
-                      = "Hi #{@person.name}"
+                      = "Hi #{@follower_person.name}"
                   br
                   br
                   font style="font-family: Verdana, Geneva, sans-serif; color:#666766; font-size:13px; line-height:21px"
                     - text = 'There is an update in '
                     = text
                     strong
-                      = @entity.name
+                      = @followed.name
                     | .
                     br
                     br
-                    = link_to 'Check it out!', @entity
+                    = link_to 'Check it out!', @followed
                   tr
                     td &nbsp;
                   tr
