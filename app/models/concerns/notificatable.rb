@@ -2,12 +2,10 @@ module Notificatable
   extend ActiveSupport::Concern
 
   included do
-    after_update do |entity|
-      send_notification entity
-    end
+    after_update :send_notification, if: :changed?
   end
 
-  def send_notification(entity)
-    NotificationJob.perform_later entity
+  def send_notification
+    NotificationJob.perform_later self
   end
 end
