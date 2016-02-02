@@ -114,10 +114,19 @@ RSpec.describe Technology, type: :model do
       allow(technology).to receive(:send_notification)
     end
 
-    it 'sends notification email after saving' do
+    it 'sends notification after saving' do
       expect(technology).to receive(:send_notification).exactly(2).times
+      technology.name = 'some'
       technology.save
-      technology.update_attributes({})
+      technology.name = 'other'
+      technology.save
+    end
+
+    it 'doesn\'t send notification after saving if there are no changes' do
+      expect(technology).to receive(:send_notification).exactly(0).times
+      technology.save
+      technology.save
+      technology.save
     end
   end
 
