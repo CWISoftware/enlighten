@@ -11,9 +11,9 @@
     = f.input :parent_id, collection: Technology.all, value_method: :id, label_method: :name
 
   .form-group
-    = f.input :name, input_html: { :class => 'form-text' }
+    = f.input :name, input_html: { class: 'form-text' }
 
   .form-group
-    = f.input :website, input_html: { :class => 'form-text' }
+    = f.input :website, input_html: { class: 'form-text' }
 
   = f.button :submit

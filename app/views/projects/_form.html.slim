@@ -5,19 +5,19 @@
     = f.attachment_field :image
 
   .form-group
-    = f.input :name, autofocus: true, input_html: { :class => 'form-text' }
+    = f.input :name, autofocus: true, input_html: { class: 'form-text' }
 
   .form-group
     = f.association :client
 
   .form-group
-    = f.input :description, input_html: { :class => 'form-text' }
+    = f.input :description, input_html: { class: 'form-text' }
 
   .form-group
-    = f.input :scm_type, input_html: { :class => 'form-text' }
+    = f.input :scm_type, input_html: { class: 'form-text' }
 
   .form-group
-    = f.input :scm_reference, input_html: { :class => 'form-text' }
+    = f.input :scm_reference, input_html: { class: 'form-text' }
 
   .form-group
     = f.association :technologies, as: :check_boxes
