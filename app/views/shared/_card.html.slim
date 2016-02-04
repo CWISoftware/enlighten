@@ -1,20 +1,17 @@
-div class='card-grid__card card-grid__card--{{ type }}' href='{{ links.card }}'
+style type='text/css'
+  = '{{{ style }}}'
+
+div class='card-grid__card card-grid__card--{{ type }}' href='{{ links.cardable }}'
   .card-grid__card__container
     .card-grid__card__container__path
-      = '{{ path }}'
+      = '{{ section }}'
     = link_to '{{ links.self }}' do
       img.card-grid__card__container__avatar.geometry.geometry--circle src='{{ avatar }}'
     .card-grid__card__container__title
       = link_to('{{ title }}', '{{ links.self }}')
     .card-grid__card__container__subtitle
       = '{{ subtitle }}'
-    ul.card-grid__card__container__information
-      = '{{ #informations }}'
-      li
-        img src='{{ icn }}'
-        .card-grid__card__container__information__label
-          = '{{ title }}'
-      = '{{ /informations }}'
+    = '{{{ description }}}'
     .card-grid__card__container__statistic
       = '{{ #statistics }}'
       .card-grid__card__container__statistic__item
