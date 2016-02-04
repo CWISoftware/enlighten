@@ -30,7 +30,7 @@ permission_acls_administrator = {
     :index, :cards, :show, :card, :new, :edit, :create, :update, :destroy, :unfollow, :follow, :unlike, :like
   ],
   card: [
-    :index
+    :index, :cards, :card, :unfollow, :follow, :unlike, :like
   ]
 }
 
@@ -74,7 +74,7 @@ permission_acls_user = {
     :index, :cards, :show, :card, :unfollow, :follow, :unlike, :like
   ],
   card: [
-    :index
+    :index, :cards, :card, :unfollow, :follow, :unlike, :like
   ]
 }
 
