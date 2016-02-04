@@ -26,12 +26,6 @@ RSpec.describe TechnologiesController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'assigns @technologies' do
-      technologies = create_list(:technology, 22)
-      get :index
-      expect(assigns(:technologies)).to eq(technologies)
-    end
-
     it 'renders the :index template' do
       get :index
       expect(response).to render_template('index')
@@ -52,8 +46,8 @@ RSpec.describe TechnologiesController, type: :controller do
     end
 
     it 'renders the :card serialized' do
-      get :card, id: @technology.id, format: :json
-      expect(assigns(:technology)).to eq(@technology)
+      get :card, id: @technology.card.id, format: :json
+      expect(assigns(:card)).to eq(@technology.card)
     end
   end
 

@@ -7,7 +7,6 @@ class ClientsController < ApplicationController
 
   # GET /clients
   def index
-    @clients = Client.all
     authorize :client, :index?
   end
 

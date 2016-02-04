@@ -26,12 +26,6 @@ RSpec.describe ClientsController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'assigns @clients' do
-      clients = create_list(:client, 22)
-      get :index
-      expect(assigns(:clients)).to eq(clients)
-    end
-
     it 'renders the :index template' do
       get :index
       expect(response).to render_template('index')
@@ -52,8 +46,8 @@ RSpec.describe ClientsController, type: :controller do
     end
 
     it 'renders the :card serialized' do
-      get :card, id: @client.id, format: :json
-      expect(assigns(:client)).to eq(@client)
+      get :card, id: @client.card.id, format: :json
+      expect(assigns(:card)).to eq(@client.card)
     end
   end
 
