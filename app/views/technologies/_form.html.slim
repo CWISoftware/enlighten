@@ -1,25 +1,19 @@
-= simple_form_for(@technology) do |f|
+= simple_form_for @technology, html: { class: 'form-bordered' } do |f|
   = f.error_notification
 
-  .row
-    .small-12.columns
-      = f.attachment_field :image
+  .form-group
+    = f.attachment_field :image
 
-  .row
-    .small-12.columns
-      = f.input :technology_category_id, collection: TechnologyCategory.all, value_method: :id, label_method: :name
+  .form-group
+    = f.input :technology_category_id, collection: TechnologyCategory.all, value_method: :id, label_method: :name
 
-  .row
-    .small-12.columns
-      = f.input :parent_id, collection: Technology.all, value_method: :id, label_method: :name
+  .form-group
+    = f.input :parent_id, collection: Technology.all, value_method: :id, label_method: :name
 
-  .row
-    .small-12.columns
-      = f.input :name
+  .form-group
+    = f.input :name, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.input :website
+  .form-group
+    = f.input :website, input_html: { :class => 'form-text' }
 
-  .row
-    = f.button :submit
+  = f.button :submit

@@ -1,7 +1,10 @@
-.row.nested-fields
- .row.collapse.small-4.columns
-   .small-10.columns
-     = f.input :provider, collection: SocialLink.available_providers
-     = f.input :identifier
-   .small-2.columns
+.nested-fields
+  .collapse
+    .form-group
+      = f.input :provider, collection: SocialLink.available_providers
+
+    .form-group
+      = f.input :identifier, input_html: { :class => 'form-text' }
+
+    .form-group
       = link_to_remove_association '-', f, class: 'button info postfix', tabindex: '-1'

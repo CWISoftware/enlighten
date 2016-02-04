@@ -1,55 +1,45 @@
-= simple_form_for(@project) do |f|
+= simple_form_for@project, html: { class: 'form-bordered' } do |f|
   = f.error_notification
 
-  .row
-    .small-12.columns
-      = f.attachment_field :image
+  .form-group
+    = f.attachment_field :image
 
-  .row
-    .small-12.columns
-      = f.input :name, autofocus: true
+  .form-group
+    = f.input :name, autofocus: true, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.association :client
+  .form-group
+    = f.association :client
 
-  .row
-    .small-12.columns
-      = f.input :description
+  .form-group
+    = f.input :description, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.input :scm_type
+  .form-group
+    = f.input :scm_type, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.input :scm_reference
+  .form-group
+    = f.input :scm_reference, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.association :technologies, as: :check_boxes
+  .form-group
+    = f.association :technologies, as: :check_boxes
 
-  fieldset
-    legend Screenshots
+  .form-group
+    fieldset
+      legend = I18n.t(:screenshots)
 
-    .row
-      .small-12.columns
-        #screenshots
-          = f.simple_fields_for :screenshots do |screenshot|
-            = render 'screenshot_fields', f: screenshot
-          .links
-            = link_to_add_association 'add screenshot', f, :screenshots
+      #screenshots
+        = f.simple_fields_for :screenshots do |screenshot|
+          = render 'screenshot_fields', f: screenshot
+        .links
+          = link_to_add_association I18n.t(:add_screenshots), f, :screenshots, class: 'button'
 
-  fieldset
-    legend Members
+  .form-group
+    fieldset
+      legend = I18n.t(:members)
 
-    .row
-      .small-12.columns
-        #members
-          = f.simple_fields_for :members do |member|
-            = render 'member_fields', f: member
-          .links
-            = link_to_add_association 'add member', f, :members
+      #members
+        = f.simple_fields_for :members do |member|
+          = render 'member_fields', f: member
+        .links
+          = link_to_add_association I18n.t(:add_members), f, :members, class: 'button'
 
-  .row
-    = f.button :submit, class: 'right'
+  = f.button :submit, class: 'button right'
