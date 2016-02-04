@@ -137,7 +137,7 @@ GEM
     debugging (1.1.0)
       binding.repl (~> 3.0)
       paint (>= 0.9, < 2.0)
-    devise (3.5.4)
+    devise (3.5.5)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
