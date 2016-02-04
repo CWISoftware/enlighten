@@ -49,7 +49,7 @@ RSpec.describe ActivitiesController, type: :controller do
       it 'returns the model validation errors' do
         returned_post_data = JSON.parse post(:create, **request_data).body
 
-        expect(returned_post_data).to eq('item' => ['can\'t be blank'])
+        expect(returned_post_data).to eq('item' => [I18n.t(:"errors.messages.blank")])
       end
     end
   end

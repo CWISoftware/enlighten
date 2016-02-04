@@ -1,13 +1,13 @@
-= simple_form_for @client, html: { class: "form-bordered"} do |f|
+= simple_form_for @client, html: { class: 'form-bordered' } do |f|
   = f.error_notification
 
   .form-group
     = f.attachment_field :image
 
   .form-group
-    = f.input :name, input_html: { :class => 'form-text' }
+    = f.input :name, input_html: { class: 'form-text' }
 
   .form-group
-    = f.input :website, input_html: { :class => 'form-text' }
+    = f.input :website, input_html: { class: 'form-text' }
 
   = f.button :submit
