@@ -11,6 +11,8 @@
 #
 
 class Person < ActiveRecord::Base
+  include Cardify
+
   has_paper_trail
 
   belongs_to :user
@@ -26,6 +28,8 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many :likers,
                           class_name: User.name,
                           join_table: :users_liking_people
+
+  has_one :card, as: :cardable, dependent: :destroy
 
   accepts_nested_attributes_for :technologies
   accepts_nested_attributes_for :social_links
