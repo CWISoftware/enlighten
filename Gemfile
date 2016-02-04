@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '~> 4.2.5.1'
 gem 'rails-i18n'
 
 # slim templates
@@ -154,3 +154,4 @@ group :development, :test do
 end
 
 ruby '2.2.2'
+gem 'rails-html-sanitizer', '~> 1.0.3'
