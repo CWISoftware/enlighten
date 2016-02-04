@@ -35,3 +35,9 @@ en:
         link: 'https://www.youtube.com/channel/UCQrB7CaLhd0iFSNXE-whRow'
       - name: 'vimeo' 
         link: 'https://vimeo.com/cwisoftware'
+  cards:
+    client: 'Clientes'
+    person: 'Pessoas'
+    project: 'Projetos'
+    technology: 'Conhecimentos'
+
