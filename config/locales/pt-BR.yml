@@ -1,0 +1,34 @@
+pt-BR:
+  errors:
+    messages:
+      blank: "não pode ficar em branco"
+  company:
+    name: 'CWI Software'
+    copyright: '@ 2015 CWI Software. Todos os direitos reservados.'
+    social_networks_title: 'ACOMPANHE A CWI'
+    social_networks:
+      - name: 'facebook'
+        link: 'https://www.facebook.com/CWISoftware'
+      - name: 'twitter'
+        link: 'https://twitter.com/cwisoftware'
+      - name: 'linkedin'
+        link: 'https://www.linkedin.com/company/cwi-software'
+      - name: 'youtube'
+        link: 'https://www.youtube.com/channel/UCQrB7CaLhd0iFSNXE-whRow'
+      - name: 'vimeo'
+        link: 'https://vimeo.com/cwisoftware'
+  cards:
+    client: 'Clientes'
+    person: 'Pessoas'
+    project: 'Projetos'
+    technology: 'Conhecimentos'
+  comments: "Comentários"
+  favorites: "Curtidas"
+  follow: "Seguir"
+  followers: "Seguindo"
+  like: "Curtir"
+  posts: "Postagens"
+  profile_edit: "Editar Perfil"
+  profile_delete: "Deletar Perfil"
+  unfollow: "Deixar de seguir"
+  unlike: "Descurtir"

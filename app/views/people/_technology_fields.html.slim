@@ -1,8 +1,14 @@
-.row.nested-fields
- .row.collapse.small-4.columns
-   .small-10.columns
-     = f.input :technology_id, collection: Technology.all, label_method: :name
-     = f.input :skill_rating
-     = f.input :certificated
-   .small-2.columns
+.nested-fields
+  .collapse
+    .form-group
+      = f.input :technology_id, collection: Technology.all, label_method: :name
+
+    .form-group
+      = f.input :skill_rating, input_html: { class: 'form-text' }
+
+    .form-group
+      .checkbox
+        = f.input :certificated
+
+    .form-group
       = link_to_remove_association '-', f, class: 'button info postfix', tabindex: '-1'

@@ -1,7 +1,10 @@
-.row.nested-fields
- .row.collapse.small-4.columns
-   .small-10.columns
-     = f.attachment_field :image
-     = f.input :description
-   .small-2.columns
+.nested-fields
+  .collapse
+    .form-group
+      = f.attachment_field :image
+
+    .form-group
+      = f.input :description, input_html: { class: 'form-text' }
+
+    .form-group
       = link_to_remove_association '-', f, class: 'button info postfix', tabindex: '-1'
