@@ -1,17 +1,13 @@
-= simple_form_for(@client) do |f|
+= simple_form_for @client, html: { class: "form-bordered"} do |f|
   = f.error_notification
 
-  .row
-    .small-12.columns
-      = f.attachment_field :image
+  .form-group
+    = f.attachment_field :image
 
-  .row
-    .small-12.columns
-      = f.input :name
+  .form-group
+    = f.input :name, input_html: { :class => 'form-text' }
 
-  .row
-    .small-12.columns
-      = f.input :website
+  .form-group
+    = f.input :website, input_html: { :class => 'form-text' }
 
-  .row
-    = f.button :submit
+  = f.button :submit
