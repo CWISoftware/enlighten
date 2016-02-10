@@ -27,8 +27,7 @@ class Card < ActiveRecord::Base
                           class_name: User.name,
                           join_table: :users_liking_cards
 
-  accepts_attachments_for :galleries, attachment: :attachment
-  accepts_attachments_for :attachments, attachment: :attachment
+  accepts_nested_attributes_for :galleries, :attachments
 
   scope :cards,        -> { all.order(created_at: :desc) }
   scope :clients,      -> { where(cardable_type: Client.name).order(created_at: :desc) }
