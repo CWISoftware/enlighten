@@ -22,13 +22,12 @@ pt-BR:
     person: 'Pessoas'
     project: 'Projetos'
     technology: 'Conhecimentos'
-  comments: "Comentários"
-  favorites: "Curtidas"
   follow: "Seguir"
-  followers: "Seguindo"
+  unfollow: "Deixar de seguir"
+  followers: "Seguidores"
+  following: "Seguindo"
   like: "Curtir"
-  posts: "Postagens"
+  unlike: "Descurtir"
+  likers: "Curtidas"
   profile_edit: "Editar Perfil"
   profile_delete: "Deletar Perfil"
-  unfollow: "Deixar de seguir"
-  unlike: "Descurtir"

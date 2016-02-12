@@ -1,29 +1,27 @@
-.card.card--avatar
-  .card__title.text-center
-    .card__title-background  style="background-image: url(#{attachment_url(person, :image, :fill, 300, 300, format: 'png')})"
+.col-small-12.col-medium-3
+  .card-grid__card__container
+    .card-grid__card__container__spacer
     = link_to person do
-      .avatar.avatar--person style="background-image: url(#{attachment_url(person, :image, :fill, 300, 300, format: 'png')})"
+      img.card-grid__card__container__avatar.geometry.geometry--circle src="#{attachment_url(person, :image, :fill, 300, 300, format: 'png')}"
+    .card-grid__card__container__title
+      = link_to(person.name, person)
+    .card-grid__card__container__subtitle
+      - if person.user.present?
+        = mail_to(person.user.email, person.user.email)
 
-  .card__content.text-center
-    - if current_user.followed_people.include?(person)
-      - if policy(person).unfollow?
-        = counter_link(I18n.t(:unfollow), person.followers.count, unfollow_person_path(person))
-    - elsif policy(person).follow?
-      = counter_link(I18n.t(:follow), person.followers.count, follow_person_path(person))
+  .card-grid__card__spacer
 
-    - if current_user.liked_people.include?(person)
-      - if policy(person).unlike?
-        = counter_link(I18n.t(:unlike), person.likers.count, unlike_person_path(person))
-    - elsif policy(person).like?
-      = counter_link(I18n.t(:like), person.likers.count, like_person_path(person))
+  .card-grid__card__container
+    .card-grid__card__container__path
+      = 'NA EMPRESA'
+    = render partial: 'people/cards/description', locals: { model: person }
 
-    h1.card--profile__name = link_to person do
-      = person.name
+  .card-grid__card__spacer
 
-    - if person.user.present?
-      span.card--profile__data = mail_to person.user.email, person.user.email
-
-    .social-links
+  .card-grid__card__container
+    .card-grid__card__container__path
+      = 'REDES SOCIAIS'
+    - if person.social_links.present?
       - person.social_links.each do |social_link|
         = link_to social_link.url, target: '_blank'
           = image_tag "social/#{social_link.provider}.png", class: 'social-link', width: '24', height: '24'
