@@ -1,0 +1,18 @@
+.col-small-12.col-medium-9
+  section
+    .row
+    h5 Conhecimentos
+    ul.list-inline
+      - @save_category_id
+      - person.order_technologies.each do |person_technology|
+        - @categoy_id = person_technology.technology.technology_category_id
+        
+        -if @save_category_id != @categoy_id
+          -@save_category_id = @categoy_id
+          .knowledge-categoy
+            = person_technology.technology.category.name
+
+        li.col-small-3.knowledge-item
+          = link_to person_technology.technology do
+            img.card-grid__card__container__avatar.geometry.geometry--circle.avatar-project src="#{attachment_url(person_technology.technology, :image, :fill, 45, 45, format: 'png')}"
+            = " #{person_technology.technology.name}"
