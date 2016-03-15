@@ -1,6 +1,6 @@
 - content_for :title, @person.name
 
-.row
+.row  
   = render partial: 'card', locals: { person: @person }
 
   .col-small-12.col-medium-9
@@ -24,3 +24,5 @@
 
           - unless policy(@person).destroy?
             = link_to I18n.t(:profile_delete), @person, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button'
+            
+  = render partial: 'people/cards/knowledge', locals: { person: @person }

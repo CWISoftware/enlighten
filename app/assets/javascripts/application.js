@@ -10,14 +10,3 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require cocoon
-//= require masonry.pkgd
-//= require mustache.min
-//= require_tree .
-
-// lightweight dependencies
-//= require lightweight/js/lightweight
-//= require lightweight/js/dropdown
-//= require lightweight/js/navbar
