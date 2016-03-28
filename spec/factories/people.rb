@@ -15,6 +15,11 @@ FactoryGirl.define do
   factory :person, class: Person do
     user_id { create(:user).id }
     name { Faker::Name.name }
+    notification true
+
+    trait :without_notification do
+      notification false
+    end
   end
 
   factory :invalid_person, class: Person do

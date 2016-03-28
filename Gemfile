@@ -153,5 +153,10 @@ group :development, :test do
   gem 'brakeman', require: false
 end
 
+group :development, :production do
+  # background-jobs
+  gem 'sidekiq', '4.0.0'
+end
+
 ruby '2.2.2'
 gem 'rails-html-sanitizer', '~> 1.0.3'

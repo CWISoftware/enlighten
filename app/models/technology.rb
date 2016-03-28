@@ -17,6 +17,8 @@ class Technology < ActiveRecord::Base
 
   has_paper_trail
 
+  include Notificatable
+
   belongs_to :parent, class_name: name
 
   has_many :children,
