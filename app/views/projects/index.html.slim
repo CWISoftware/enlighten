@@ -1,5 +1,6 @@
 script id='card-template' type='x-tmpl-mustache'
-  = render partial: 'shared/card'
+  = render partial: 'shared/card'  
+  = card_grid_javascript
 
 .row
   .card-grid href = cards_projects_path(format: :json)

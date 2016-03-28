@@ -49,4 +49,10 @@ class Person < ActiveRecord::Base
       activities
     end
   end
+
+  # Returns technologies sorted by category
+  def order_technologies
+    technologies.includes('technology').order('technologies.technology_category_id')
+  end
+
 end

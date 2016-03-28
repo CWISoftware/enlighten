@@ -10,6 +10,7 @@
 @import 'pages/settings';
 @import 'pages/dashboard';
 @import 'pages/login';
+@import 'pages/people';
 
 .container {
   min-height: 100%;
@@ -17,4 +18,9 @@
 
 .row--people {
   margin-top: 15px;
+}
+
+ .avatar-project {
+  width: 80px;
+  height: 80px;
 }
