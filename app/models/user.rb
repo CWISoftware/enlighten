@@ -21,8 +21,6 @@
 class User < ActiveRecord::Base
   include ::Authenticatable
 
-  has_paper_trail
-
   before_create :creates_person_to_ldap_authentication, :assigns_default_permission_roles
 
   has_one :person
@@ -43,6 +41,10 @@ class User < ActiveRecord::Base
                           class_name: Person.name,
                           join_table: :users_following_people
 
+  has_and_belongs_to_many :followed_cards,
+                          class_name: Card.name,
+                          join_table: :users_following_cards
+
   has_and_belongs_to_many :liked_projects,
                           class_name: Project.name,
                           join_table: :users_liking_projects
@@ -58,6 +60,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :liked_people,
                           class_name: Person.name,
                           join_table: :users_liking_people
+
+  has_and_belongs_to_many :liked_cards,
+                          class_name: Card.name,
+                          join_table: :users_liking_cards
 
   has_and_belongs_to_many :permission_roles,
                           class_name: Permission::Role.name,

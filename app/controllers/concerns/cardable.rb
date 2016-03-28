@@ -1,11 +1,16 @@
 module Cardable
   extend ActiveSupport::Concern
 
+  included do
+    before_action :set_cards, only: [:cards]
+    before_action :set_card, only: [:card]
+  end
+
   # GET /model_class/cards.json
   def cards
     respond_to do |format|
       format.json do
-        render json: find_all, each_serializer: CardSerializer
+        render json: @cards, each_serializer: CardSerializer
       end
     end
   end
@@ -14,26 +19,22 @@ module Cardable
   def card
     respond_to do |format|
       format.json do
-        render json: find_one, serializer: CardSerializer
+        render json: @card, serializer: CardSerializer
       end
     end
   end
 
   protected
 
-  def find_all
-    paginate model_class.all(current_user)
+  def scope
+    self.class.name.gsub(/Controller/, '').downcase
   end
 
-  def find_one
-    model_class.new(model_variable, current_user)
+  def set_cards
+    @cards = paginate Card.send(scope)
   end
 
-  def model_variable
-    send("set_#{controller_name.singularize}".to_sym)
-  end
-
-  def model_class
-    "Card::#{controller_name.classify}".constantize
+  def set_card
+    @card = Card.find(params[:id])
   end
 end

@@ -1,0 +1,12 @@
+- if model.memberships.present?
+  ul.card-grid__card__container__information
+    li
+      = image_tag('icons/cards/icn-role.svg')
+      .card-grid__card__container__information__label
+        - if model.memberships.last.role.present?
+          = model.memberships.last.role.name
+    li
+      = image_tag('icons/cards/icn-projects.svg')
+      .card-grid__card__container__information__label
+        - if model.memberships.last.project.present?
+          = model.memberships.last.project.name

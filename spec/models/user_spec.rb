@@ -41,10 +41,12 @@ RSpec.describe User, type: :model do
   it { expect(subject).to have_and_belong_to_many(:followed_projects) }
   it { expect(subject).to have_and_belong_to_many(:followed_clients) }
   it { expect(subject).to have_and_belong_to_many(:followed_people) }
+  it { expect(subject).to have_and_belong_to_many(:followed_cards) }
   it { expect(subject).to have_and_belong_to_many(:liked_technologies) }
   it { expect(subject).to have_and_belong_to_many(:liked_projects) }
   it { expect(subject).to have_and_belong_to_many(:liked_clients) }
   it { expect(subject).to have_and_belong_to_many(:liked_people) }
+  it { expect(subject).to have_and_belong_to_many(:liked_cards) }
   it { expect(subject).to have_and_belong_to_many(:permission_roles) }
 
   describe '#projects' do
@@ -140,6 +142,30 @@ RSpec.describe User, type: :model do
       user.reload
 
       expect(user.liked_people).to eq [person]
+    end
+  end
+
+  describe '#cards' do
+    let(:card) { create :card }
+
+    it 'user followed cards' do
+      user = create :user
+
+      user.followed_cards << card
+      user.save
+      user.reload
+
+      expect(user.followed_cards).to eq [card]
+    end
+
+    it 'user liked cards' do
+      user = create :user
+
+      user.liked_cards << card
+      user.save
+      user.reload
+
+      expect(user.liked_cards).to eq [card]
     end
   end
 

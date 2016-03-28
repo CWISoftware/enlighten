@@ -1,0 +1,9 @@
+ul.card-grid__card__container__information
+  li
+    = image_tag('icons/cards/icn-posts.svg')
+    .card-grid__card__container__information__label
+      = "#{model.activities.count} publicações"
+  li
+    = image_tag('icons/cards/icn-projects.svg')
+    .card-grid__card__container__information__label
+      = "#{model.projects.count} projetos"

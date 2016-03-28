@@ -1,11 +1,10 @@
 class CardsController < ApplicationController
-  # GET /cards.json
-  def index
-    @cards = paginate Card.all(current_user)
-    authorize :card, :index?
+  include Cardable
+  include Likable
+  include Followable
 
-    respond_to do |format|
-      format.json { render json: @cards, each_serializer: CardSerializer }
-    end
+  # GET /cards
+  def index
+    authorize :card, :index?
   end
 end
