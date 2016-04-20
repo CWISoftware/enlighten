@@ -4,7 +4,8 @@
       = f.input :technology_id, collection: Technology.all, label_method: :name
 
     .form-group
-      = f.input :skill_rating, input_html: { class: 'form-text' }
+      = f.input :skill_rating, input_html: { :class => 'form-text' }
+
 
     .form-group
       .checkbox

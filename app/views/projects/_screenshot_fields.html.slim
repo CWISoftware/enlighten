@@ -4,7 +4,7 @@
       = f.attachment_field :image
 
     .form-group
-      = f.input :description, input_html: { class: 'form-text' }
+      = f.input :description, input_html: { :class => 'form-text' }
 
     .form-group
       = link_to_remove_association '-', f, class: 'button info postfix', tabindex: '-1'

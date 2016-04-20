@@ -1,16 +1,16 @@
 .nested-fields
   .collapse
     .form-group
-      = f.input :person_id, collection: Person.all, label_method: :name, input_html: { class: 'form-text' }
+      = f.input :person_id, collection: Person.all, label_method: :name, input_html: { :class => 'form-text' }
 
     .form-group
-      = f.input :role_id, collection: Role.for_select, value_method: :id, label_method: :name, input_html: { class: 'form-text' }
+      = f.input :role_id, collection: Role.for_select, value_method: :id, label_method: :name, input_html: { :class => 'form-text' }
 
     .form-group
-      = f.input :period_start, as: :string, input_html: { type: 'date', class: 'form-text' }
+      = f.input :period_start, as: :string, input_html: { type: 'date', :class => 'form-text' }
 
     .form-group
-      = f.input :period_end, as: :string, input_html: { type: 'date', class: 'form-text' }
+      = f.input :period_end, as: :string, input_html: { type: 'date', :class => 'form-text' }
 
     .form-group
       = link_to_remove_association '-', f, class: 'button info postfix', tabindex: '-1'
