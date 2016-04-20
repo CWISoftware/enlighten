@@ -13,7 +13,11 @@
 #
 
 class Technology < ActiveRecord::Base
+  include Cardify
+
   has_paper_trail
+
+  include Notificatable
 
   belongs_to :parent, class_name: name
 
@@ -39,6 +43,8 @@ class Technology < ActiveRecord::Base
   has_and_belongs_to_many :likers,
                           class_name: User.name,
                           join_table: :users_liking_technologies
+
+  has_one :card, as: :cardable, dependent: :destroy
 
   validates :name, presence: true
   validates :category, presence: true

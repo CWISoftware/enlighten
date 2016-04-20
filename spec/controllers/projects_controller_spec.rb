@@ -27,12 +27,6 @@ RSpec.describe ProjectsController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'assigns @projects' do
-      projects = create_list(:project, 22)
-      get :index
-      expect(assigns(:projects)).to eq(projects)
-    end
-
     it 'renders the :index template' do
       get :index
       expect(response).to render_template('index')
@@ -53,8 +47,8 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
     it 'renders the :card serialized' do
-      get :card, id: @project.id, format: :json
-      expect(assigns(:project)).to eq(@project)
+      get :card, id: @project.card.id, format: :json
+      expect(assigns(:card)).to eq(@project.card)
     end
   end
 

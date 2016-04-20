@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128172519) do
+ActiveRecord::Schema.define(version: 20160203155500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,41 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_index "activities", ["activity_owner_type", "activity_owner_id"], name: "index_activities_on_activity_owner_type_and_activity_owner_id", using: :btree
   add_index "activities", ["item_type", "item_id"], name: "index_activities_on_item_type_and_item_id", using: :btree
   add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
+
+  create_table "card_attachments", force: :cascade do |t|
+    t.integer  "card_id"
+    t.string   "attachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "card_attachments", ["card_id"], name: "index_card_attachments_on_card_id", using: :btree
+
+  create_table "card_galleries", force: :cascade do |t|
+    t.integer  "card_id"
+    t.integer  "timeout"
+    t.integer  "order"
+    t.string   "attachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "card_galleries", ["card_id"], name: "index_card_galleries_on_card_id", using: :btree
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "section"
+    t.string   "title"
+    t.string   "subtitle"
+    t.text     "description"
+    t.text     "style"
+    t.integer  "size"
+    t.integer  "cardable_id"
+    t.string   "cardable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "cards", ["cardable_type", "cardable_id"], name: "index_cards_on_cardable_type_and_cardable_id", using: :btree
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -179,6 +214,17 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "users_following_cards", id: false, force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_following_cards", ["card_id"], name: "index_users_following_cards_on_card_id", using: :btree
+  add_index "users_following_cards", ["user_id", "card_id"], name: "index_users_following_cards_on_user_id_and_card_id", unique: true, using: :btree
+  add_index "users_following_cards", ["user_id"], name: "index_users_following_cards_on_user_id", using: :btree
+
   create_table "users_following_clients", id: false, force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "client_id"
@@ -222,6 +268,17 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_index "users_following_technologies", ["technology_id"], name: "index_users_following_technologies_on_technology_id", using: :btree
   add_index "users_following_technologies", ["user_id", "technology_id"], name: "index_users_following_technologies_on_user_id_and_technology_id", unique: true, using: :btree
   add_index "users_following_technologies", ["user_id"], name: "index_users_following_technologies_on_user_id", using: :btree
+
+  create_table "users_liking_cards", id: false, force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users_liking_cards", ["card_id"], name: "index_users_liking_cards_on_card_id", using: :btree
+  add_index "users_liking_cards", ["user_id", "card_id"], name: "index_users_liking_cards_on_user_id_and_card_id", unique: true, using: :btree
+  add_index "users_liking_cards", ["user_id"], name: "index_users_liking_cards_on_user_id", using: :btree
 
   create_table "users_liking_clients", id: false, force: :cascade do |t|
     t.integer  "user_id"
@@ -290,6 +347,8 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
   add_foreign_key "activities", "users"
+  add_foreign_key "card_attachments", "cards"
+  add_foreign_key "card_galleries", "cards"
   add_foreign_key "people", "users"
   add_foreign_key "permission_acls", "permission_roles"
   add_foreign_key "project_members", "roles"
@@ -297,6 +356,8 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_foreign_key "projects", "clients"
   add_foreign_key "social_links", "people"
   add_foreign_key "technologies", "technology_categories"
+  add_foreign_key "users_following_cards", "cards"
+  add_foreign_key "users_following_cards", "users"
   add_foreign_key "users_following_clients", "clients"
   add_foreign_key "users_following_clients", "users"
   add_foreign_key "users_following_people", "people"
@@ -305,6 +366,8 @@ ActiveRecord::Schema.define(version: 20160128172519) do
   add_foreign_key "users_following_projects", "users"
   add_foreign_key "users_following_technologies", "technologies"
   add_foreign_key "users_following_technologies", "users"
+  add_foreign_key "users_liking_cards", "cards"
+  add_foreign_key "users_liking_cards", "users"
   add_foreign_key "users_liking_clients", "clients"
   add_foreign_key "users_liking_clients", "users"
   add_foreign_key "users_liking_people", "people"

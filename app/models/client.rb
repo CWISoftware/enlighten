@@ -11,7 +11,11 @@
 #
 
 class Client < ActiveRecord::Base
+  include Cardify
+
   has_paper_trail
+
+  include Notificatable
 
   has_many :projects
 
@@ -22,6 +26,8 @@ class Client < ActiveRecord::Base
   has_and_belongs_to_many :likers,
                           class_name: User.name,
                           join_table: :users_liking_clients
+
+  has_one :card, as: :cardable, dependent: :destroy
 
   validates :name, presence: true
 

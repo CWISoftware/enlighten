@@ -7,7 +7,6 @@ class PeopleController < ApplicationController
 
   # GET /people
   def index
-    @people = Person.all
     authorize :person, :index?
   end
 

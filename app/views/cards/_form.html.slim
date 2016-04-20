@@ -1,0 +1,42 @@
+= simple_form_for(@card, html: { class: 'form-bordered' }) do |f|
+  = f.error_notification
+
+  .form-group
+    fieldset
+      legend Galeria
+
+      #galleries
+        = f.simple_fields_for :galleries do |gallery|
+          = render 'gallery_fields', f: gallery
+        .links
+          = link_to_add_association 'Adicionar', f, :galleries, class: 'button'
+  
+  .form-group
+    fieldset
+      legend Anexos
+
+      #attachments
+        = f.simple_fields_for :attachments do |attachment|
+          = render 'attachment_fields', f: attachment
+        .links
+          = link_to_add_association 'Adicionar', f, :attachments, class: 'button'
+
+  .form-group
+    = f.input :section, input_html: { class: 'form-text' }
+
+  .form-group
+    = f.input :title, input_html: { class: 'form-text' }
+
+  .form-group
+    = f.input :subtitle, input_html: { class: 'form-text' }
+
+  .form-group
+    = f.input :description, as: :ckeditor, input_html: { class: 'form-text' }
+
+  .form-group
+    = f.input :style, input_html: { class: 'form-text ace' }
+
+  .form-group
+    = f.input :size, input_html: { class: 'form-text' }
+
+  = f.button :submit, class: 'button right'

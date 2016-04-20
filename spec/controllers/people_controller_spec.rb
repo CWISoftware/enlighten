@@ -26,12 +26,6 @@ RSpec.describe PeopleController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'assigns @people' do
-      people = create_list(:person, 22)
-      get :index
-      expect(assigns(:people)).to eq(people)
-    end
-
     it 'renders the :index template' do
       get :index
       expect(response).to render_template('index')
@@ -52,8 +46,8 @@ RSpec.describe PeopleController, type: :controller do
     end
 
     it 'renders the :card serialized' do
-      get :card, id: @person.id, format: :json
-      expect(assigns(:person)).to eq(@person)
+      get :card, id: @person.card.id, format: :json
+      expect(assigns(:card)).to eq(@person.card)
     end
   end
 

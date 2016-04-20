@@ -1,52 +1,28 @@
 - content_for :title, @person.name
 
-.row.row--people
-  aside.col-small-3
-    = render partial: 'card', locals: { person: @person }
+.row  
+  = render partial: 'card', locals: { person: @person }
 
-  .main.col-small-offset-3
-    .card.card--extra-infos
-      ul.list-inline.extra-info.clear.col-small-6
-        li
-          span.extra-info__value 117
-          span.extra-info__label = I18n.t(:followers)
+  .col-small-12.col-medium-9
+    section
+      .row
+        .col-medium-12.col-large-6.text-center
+          ul.list-inline
+            li.col-small-4.col-medium-4
+              span 240
+              span = I18n.t(:following)
+            li.col-small-4.col-medium-4
+              span = @person.likers.count
+              span = I18n.t(:likers)
+            li.col-small-4.col-medium-4
+              span = @person.followers.count
+              span = I18n.t(:followers)
 
-        li
-          span.extra-info__value 180
-          span.extra-info__label = I18n.t(:favorites)
+        .col-medium-12.col-large-6.text-center
+          - unless policy(@person).edit?
+            = link_to I18n.t(:profile_edit), edit_person_path(@person), class: 'button'
 
-        li
-          span.extra-info__value 124
-          span.extra-info__label = I18n.t(:comments)
-
-        li
-          span.extra-info__value 240
-          span.extra-info__label = I18n.t(:posts)
-
-      .col-small-offset-6.text-right
-        - if policy(@person).edit?
-          = link_to I18n.t(:profile_edit), edit_person_path(@person), class: 'button'
-
-        - if policy(@person).destroy?
-          = link_to I18n.t(:profile_delete), @person, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button'
-    .card
-      .card__content
-        h5 Technologies
-        ul
-        - @person.technologies.each do |person_technology|
-          li tooltip=person_technology.technology.name = link_to person_technology.technology do
-            = image_tag attachment_url(person_technology.technology, :image, :fill, 45, 45, format: 'png'), class: 'avatar avatar--small avatar--technology'
-            = " #{person_technology.technology.name} (#{person_technology.skill_rating})"
-
-    .card
-      .card__content
-        h3 Projects
-        ul
-        - @person.memberships.each do |membership|
-          li tooltip=membership.project.name = link_to membership.project do
-            = image_tag attachment_url(membership.project, :image, :fill, 45, 45, format: 'png'), class: 'avatar avatar--small avatar--project'
-            = " #{membership.project.name}"
-
-    .card
-      .card__content
-        = render partial: 'shared/activity', locals: { instance: Post.new, url: person_activities_path(person_id: @person.id, type: :post), activities: @person.all_activities }
+          - unless policy(@person).destroy?
+            = link_to I18n.t(:profile_delete), @person, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button'
+            
+  = render partial: 'people/cards/knowledge', locals: { person: @person }

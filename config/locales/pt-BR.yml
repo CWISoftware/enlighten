@@ -17,13 +17,17 @@ pt-BR:
         link: 'https://www.youtube.com/channel/UCQrB7CaLhd0iFSNXE-whRow'
       - name: 'vimeo'
         link: 'https://vimeo.com/cwisoftware'
-  comments: "Comentários"
-  favorites: "Curtidas"
+  cards:
+    client: 'Clientes'
+    person: 'Pessoas'
+    project: 'Projetos'
+    technology: 'Conhecimentos'
   follow: "Seguir"
-  followers: "Seguindo"
+  unfollow: "Deixar de seguir"
+  followers: "Seguidores"
+  following: "Seguindo"
   like: "Curtir"
-  posts: "Postagens"
+  unlike: "Descurtir"
+  likers: "Curtidas"
   profile_edit: "Editar Perfil"
   profile_delete: "Deletar Perfil"
-  unfollow: "Deixar de seguir"
-  unlike: "Descurtir"

@@ -14,7 +14,11 @@
 #
 
 class Project < ActiveRecord::Base
+  include Cardify
+
   has_paper_trail
+
+  include Notificatable
 
   belongs_to :client
 
@@ -34,6 +38,8 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :likers,
                           class_name: User.name,
                           join_table: :users_liking_projects
+
+  has_one :card, as: :cardable, dependent: :destroy
 
   accepts_nested_attributes_for :members, :screenshots
 

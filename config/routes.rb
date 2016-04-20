@@ -63,7 +63,7 @@
 #
 
 Rails.application.routes.draw do
-  root 'dashboard#index'
+  root 'cards#index'
 
   concern :followable do
     member do
@@ -103,7 +103,7 @@ Rails.application.routes.draw do
 
   resources :clients, concerns: [:followable, :likable, :cardable]
 
-  resources :cards, only: [:index]
+  resources :cards, concerns: [:followable, :likable, :cardable]
 
   devise_for :users
 end

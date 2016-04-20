@@ -10,4 +10,12 @@ module ApplicationHelper
       content_tag(:span, text, class: 'counter-link__label') + content_tag(:span, count, class: 'counter-link__counter')
     end
   end
+
+  def main_javascript
+    content_for(:head) do
+      javascript_include_tag('jquery', 'jquery_ujs', 'cocoon', 'masonry.pkgd', 'mustache.min',
+      'lightweight/js/lightweight', 'lightweight/js/dropdown', 'lightweight/js/navbar')
+    end
+  end
+
 end

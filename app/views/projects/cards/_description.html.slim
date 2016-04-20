@@ -1,0 +1,13 @@
+ul.card-grid__card__container__information
+  li
+    = image_tag('icons/cards/icn-posts.svg')
+    .card-grid__card__container__information__label
+      = "#{model.activities.count} publicações"
+  li
+    = image_tag('icons/cards/icn-knowledges.svg')
+    .card-grid__card__container__information__label
+      = "#{model.technologies.count} conhecimentos"
+  li
+    = image_tag('icons/cards/icn-members.svg')
+    .card-grid__card__container__information__label
+      = "#{model.members.count} participantes"

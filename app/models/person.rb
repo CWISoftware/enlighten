@@ -12,7 +12,11 @@
 #
 
 class Person < ActiveRecord::Base
+  include Cardify
+
   has_paper_trail
+
+  include Notificatable
 
   belongs_to :user
   has_many :memberships, class_name: ProjectMember.name
@@ -27,6 +31,8 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many :likers,
                           class_name: User.name,
                           join_table: :users_liking_people
+
+  has_one :card, as: :cardable, dependent: :destroy
 
   accepts_nested_attributes_for :technologies
   accepts_nested_attributes_for :social_links
@@ -45,4 +51,10 @@ class Person < ActiveRecord::Base
       activities
     end
   end
+
+  # Returns technologies sorted by category
+  def order_technologies
+    technologies.includes('technology').order('technologies.technology_category_id')
+  end
+
 end
